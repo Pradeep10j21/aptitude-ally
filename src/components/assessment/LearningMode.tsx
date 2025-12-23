@@ -3,14 +3,15 @@ import { Lightbulb, ArrowRight, Brain, Sparkles, CheckCircle, XCircle, SkipForwa
 import { useState } from 'react';
 import { Question } from '@/types/assessment';
 import TrainDiagram from './diagrams/TrainDiagram';
-import VennDiagram from './diagrams/VennDiagram';
-import SequenceDiagram from './diagrams/SequenceDiagram';
-import PercentageDiagram from './diagrams/PercentageDiagram';
-import CubeDiagram from './diagrams/CubeDiagram';
-import RatioDiagram from './diagrams/RatioDiagram';
-import WordDiagram from './diagrams/WordDiagram';
-import AnagramDiagram from './diagrams/AnagramDiagram';
-import SquaresDiagram from './diagrams/SquaresDiagram';
+import TimeWorkDiagram from './diagrams/TimeWorkDiagram';
+import ProfitLossDiagram from './diagrams/ProfitLossDiagram';
+import PerimeterDiagram from './diagrams/PerimeterDiagram';
+import VolumeDiagram from './diagrams/VolumeDiagram';
+import BloodRelationDiagram from './diagrams/BloodRelationDiagram';
+import PuzzleDayDiagram from './diagrams/PuzzleDayDiagram';
+import SentenceCorrectionDiagram from './diagrams/SentenceCorrectionDiagram';
+import ErrorSpottingDiagram from './diagrams/ErrorSpottingDiagram';
+import SpeedConversionDiagram from './diagrams/SpeedConversionDiagram';
 
 interface LearningModeProps {
   question: Question;
@@ -46,25 +47,15 @@ const LearningMode = ({ question, selectedAnswer, onContinue }: LearningModeProp
     const questionId = question.id;
     
     if (questionId === 'q1') return <TrainDiagram step={currentStep} />;
-    if (questionId === 'q2') return <VennDiagram step={currentStep} />;
-    if (questionId === 'q3') return <WordDiagram step={currentStep} word="EPHEMERAL" meaning="lasting for a very short time" options={[
-      { word: 'Eternal', meaning: 'lasting forever', isSynonym: false },
-      { word: 'Transient', meaning: 'temporary, brief', isCorrect: true },
-      { word: 'Significant', meaning: 'important', isSynonym: false },
-      { word: 'Tangible', meaning: 'touchable', isSynonym: false },
-    ]} />;
-    if (questionId === 'q4') return <SequenceDiagram step={currentStep} />;
-    if (questionId === 'q5') return <PercentageDiagram step={currentStep} />;
-    if (questionId === 'q6') return <AnagramDiagram step={currentStep} scrambled="CIFAIPC" answer="PACIFIC" category="Ocean" />;
-    if (questionId === 'q7') return <WordDiagram step={currentStep} word="BENEVOLENT" meaning="kind and well-meaning" isAntonym={true} options={[
-      { word: 'Generous', meaning: 'giving freely', isSynonym: true },
-      { word: 'Malicious', meaning: 'intending harm', isCorrect: true },
-      { word: 'Charitable', meaning: 'generous to others', isSynonym: true },
-      { word: 'Friendly', meaning: 'kind, welcoming', isSynonym: true },
-    ]} />;
-    if (questionId === 'q8') return <CubeDiagram step={currentStep} />;
-    if (questionId === 'q9') return <RatioDiagram step={currentStep} />;
-    if (questionId === 'q10') return <SquaresDiagram step={currentStep} />;
+    if (questionId === 'q2') return <TimeWorkDiagram step={currentStep} totalDays={12} />;
+    if (questionId === 'q3') return <ProfitLossDiagram step={currentStep} costPrice={400} sellingPrice={500} />;
+    if (questionId === 'q4') return <PerimeterDiagram step={currentStep} side={8} />;
+    if (questionId === 'q5') return <VolumeDiagram step={currentStep} side={4} />;
+    if (questionId === 'q6') return <BloodRelationDiagram step={currentStep} />;
+    if (questionId === 'q7') return <PuzzleDayDiagram step={currentStep} startDay="Monday" daysToAdd={3} />;
+    if (questionId === 'q8') return <SentenceCorrectionDiagram step={currentStep} />;
+    if (questionId === 'q9') return <ErrorSpottingDiagram step={currentStep} />;
+    if (questionId === 'q10') return <SpeedConversionDiagram step={currentStep} speedKmh={36} />;
     
     return null;
   };
