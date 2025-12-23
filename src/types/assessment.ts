@@ -1,7 +1,13 @@
+export interface DiagramContent {
+  type: string;
+  content: string;
+}
+
 export interface ExplanationStep {
   title: string;
   content: string;
   emoji?: string;
+  diagram?: DiagramContent;
 }
 
 export interface Question {
