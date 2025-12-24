@@ -20,1321 +20,359 @@ export const questions: Question[] = [
       {
         title: 'Understand the Formula',
         content: 'The fundamental relationship is: Speed = Distance ÷ Time. We can rearrange this to find any variable.',
-        emoji: '📐',
-        diagram: {
-          type: 'formula',
-          content: `
-┌─────────────────────────────────────┐
-│         SPEED TRIANGLE              │
-│                                     │
-│              Distance               │
-│             ┌───────┐               │
-│            /         \\              │
-│           /           \\             │
-│          /             \\            │
-│         /   D = S × T   \\           │
-│        /                 \\          │
-│       ├─────────┬─────────┤         │
-│       │  Speed  │  Time   │         │
-│       │  S=D÷T  │  T=D÷S  │         │
-│       └─────────┴─────────┘         │
-└─────────────────────────────────────┘`
-        }
+        emoji: '📐'
       },
       {
         title: 'Calculate Original Speed',
-        content: 'Using the formula: Speed = Distance ÷ Time',
-        emoji: '🚂',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│     STEP 1: Find Original Speed     │
-├─────────────────────────────────────┤
-│                                     │
-│   Distance = 240 km                 │
-│   Time = 4 hours                    │
-│                                     │
-│   Speed = 240 ÷ 4                   │
-│                                     │
-│   ┌─────────────────────┐           │
-│   │  Speed = 60 km/h    │           │
-│   └─────────────────────┘           │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        content: 'Using the formula: Speed = Distance ÷ Time = 240 ÷ 4 = 60 km/h',
+        emoji: '🚂'
       },
       {
         title: 'Calculate New Speed',
-        content: 'The train increases its speed by 20 km/h from the original speed.',
-        emoji: '⚡',
-        diagram: {
-          type: 'comparison',
-          content: `
-┌─────────────────────────────────────┐
-│      STEP 2: Calculate New Speed    │
-├─────────────────────────────────────┤
-│                                     │
-│   Original Speed:  60 km/h          │
-│   Increase:       +20 km/h          │
-│                   ─────────         │
-│   New Speed:       80 km/h          │
-│                                     │
-│   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━      │
-│   ▓▓▓▓▓▓▓▓▓▓▓▓░░░░  60 km/h        │
-│   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  80 km/h        │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        content: 'The train increases its speed by 20 km/h. New Speed = 60 + 20 = 80 km/h',
+        emoji: '⚡'
       },
       {
         title: 'Find New Time',
-        content: 'Now use Time = Distance ÷ Speed with the new speed.',
-        emoji: '⏱️',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│       STEP 3: Calculate New Time    │
-├─────────────────────────────────────┤
-│                                     │
-│   Distance = 240 km (unchanged)     │
-│   New Speed = 80 km/h               │
-│                                     │
-│   Time = Distance ÷ Speed           │
-│   Time = 240 ÷ 80                   │
-│                                     │
-│   ╔═════════════════════════╗       │
-│   ║   Time = 3 hours ✓     ║       │
-│   ╚═════════════════════════╝       │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        content: 'Time = Distance ÷ Speed = 240 ÷ 80 = 3 hours',
+        emoji: '⏱️'
       }
     ],
     funFact: 'The fastest train in the world, the Shanghai Maglev, travels at 460 km/h!'
   },
   {
     id: 'q2',
-    category: 'logical',
-    question: 'All roses are flowers. Some flowers fade quickly. Which conclusion is definitely true?',
+    category: 'quantitative',
+    question: 'A can complete a work in 12 days. How much work does he do in 1 day?',
     options: [
-      'All roses fade quickly',
-      'Some roses fade quickly',
-      'No roses fade quickly',
-      'None of these can be concluded with certainty'
-    ],
-    correctAnswer: 3,
-    explanation: 'We only know that SOME flowers fade quickly, not which ones. Roses might or might not be among them.',
-    concept: 'Syllogistic Reasoning',
-    tip: 'In logic, "some" never guarantees overlap. Draw Venn diagrams to visualize relationships!',
-    difficulty: 'medium',
-    steps: [
-      {
-        title: 'Understand the Premises',
-        content: 'We have two statements to analyze logically.',
-        emoji: '📋',
-        diagram: {
-          type: 'list',
-          content: `
-┌─────────────────────────────────────┐
-│           THE PREMISES              │
-├─────────────────────────────────────┤
-│                                     │
-│   Premise 1: All roses are flowers  │
-│   → Every rose belongs to the       │
-│     set of flowers                  │
-│                                     │
-│   Premise 2: Some flowers fade      │
-│   → At least one flower fades       │
-│     quickly (but we don't know      │
-│     which ones)                     │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Visualize with Venn Diagram',
-        content: 'Drawing the relationship helps us see what we know and don\'t know.',
-        emoji: '🔵',
-        diagram: {
-          type: 'venn',
-          content: `
-┌─────────────────────────────────────┐
-│          VENN DIAGRAM               │
-├─────────────────────────────────────┤
-│                                     │
-│    ┌───────────────────────────┐    │
-│    │     ALL FLOWERS           │    │
-│    │                           │    │
-│    │    ┌───────┐              │    │
-│    │    │ Roses │   ? Flowers  │    │
-│    │    │  🌹   │   that fade  │    │
-│    │    └───────┘      ?       │    │
-│    │                           │    │
-│    └───────────────────────────┘    │
-│                                     │
-│   Roses are INSIDE Flowers          │
-│   But which flowers fade? Unknown!  │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Analyze "Some" in Logic',
-        content: 'The word "some" is critical - it means at least one, but doesn\'t specify which.',
-        emoji: '🤔',
-        diagram: {
-          type: 'explanation',
-          content: `
-┌─────────────────────────────────────┐
-│     WHAT DOES "SOME" MEAN?          │
-├─────────────────────────────────────┤
-│                                     │
-│   "Some flowers fade quickly"       │
-│                                     │
-│   Could mean:                       │
-│   ┌─────────────────────────────┐   │
-│   │ • Daisies fade (not roses)  │   │
-│   │ • Tulips fade (not roses)   │   │
-│   │ • Roses fade (maybe!)       │   │
-│   │ • All flowers fade (maybe!) │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   We simply DON'T KNOW which        │
-│   flowers are included!             │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Apply Logical Certainty',
-        content: 'We can only conclude what is DEFINITELY true from the given information.',
-        emoji: '✅',
-        diagram: {
-          type: 'conclusion',
-          content: `
-┌─────────────────────────────────────┐
-│         FINAL ANALYSIS              │
-├─────────────────────────────────────┤
-│                                     │
-│  ❌ "All roses fade" - No proof     │
-│  ❌ "Some roses fade" - No proof    │
-│  ❌ "No roses fade" - No proof      │
-│                                     │
-│  ╔═════════════════════════════╗    │
-│  ║  ✓ None can be concluded    ║    │
-│  ║    with certainty           ║    │
-│  ╚═════════════════════════════╝    │
-│                                     │
-│  KEY: Without knowing WHICH         │
-│  flowers fade, we cannot make       │
-│  any certain claim about roses!     │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      }
-    ],
-    funFact: 'Syllogistic logic was invented by Aristotle over 2,300 years ago!'
-  },
-  {
-    id: 'q3',
-    category: 'verbal',
-    question: 'Choose the word that is most similar in meaning to "EPHEMERAL":',
-    options: [
-      'Eternal',
-      'Transient',
-      'Significant',
-      'Tangible'
+      '1/6',
+      '1/12',
+      '1/24',
+      '12'
     ],
     correctAnswer: 1,
-    explanation: 'Ephemeral means lasting for a very short time, which is synonymous with transient.',
-    concept: 'Vocabulary - Synonyms',
-    tip: 'Break down unfamiliar words: "ephemera" relates to things that exist briefly!',
-    difficulty: 'medium',
-    steps: [
-      {
-        title: 'Define the Word',
-        content: 'First, understand what "ephemeral" means by looking at its roots.',
-        emoji: '📖',
-        diagram: {
-          type: 'definition',
-          content: `
-┌─────────────────────────────────────┐
-│        WORD: EPHEMERAL              │
-├─────────────────────────────────────┤
-│                                     │
-│   Origin: Greek "ephemeros"         │
-│                                     │
-│   ┌───────────────────────────┐     │
-│   │  epi (for) + hemera (day) │     │
-│   │       = "lasting a day"   │     │
-│   └───────────────────────────┘     │
-│                                     │
-│   Meaning: Lasting for a very       │
-│   SHORT time; temporary; fleeting   │
-│                                     │
-│   Examples:                         │
-│   • Ephemeral beauty of flowers     │
-│   • Ephemeral trends in fashion     │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Analyze Each Option',
-        content: 'Compare each word\'s meaning to "ephemeral".',
-        emoji: '🔍',
-        diagram: {
-          type: 'comparison',
-          content: `
-┌─────────────────────────────────────┐
-│        OPTION ANALYSIS              │
-├─────────────────────────────────────┤
-│                                     │
-│   A) Eternal                        │
-│      = lasting forever              │
-│      ❌ OPPOSITE of ephemeral       │
-│                                     │
-│   B) Transient                      │
-│      = temporary, brief, passing    │
-│      ✓ SIMILAR to ephemeral!        │
-│                                     │
-│   C) Significant                    │
-│      = important, meaningful        │
-│      ❌ Different concept            │
-│                                     │
-│   D) Tangible                       │
-│      = touchable, physical          │
-│      ❌ Different concept            │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Visual Comparison',
-        content: 'See how ephemeral and transient share the same meaning on a timeline.',
-        emoji: '⏰',
-        diagram: {
-          type: 'timeline',
-          content: `
-┌─────────────────────────────────────┐
-│         DURATION SCALE              │
-├─────────────────────────────────────┤
-│                                     │
-│   SHORT ◄────────────────► LONG     │
-│                                     │
-│   ├──┤                              │
-│   EPHEMERAL (brief moment)          │
-│                                     │
-│   ├──┤                              │
-│   TRANSIENT (short-lived)           │
-│                                     │
-│   ├───────────────────────────────┤ │
-│   ETERNAL (forever)                 │
-│                                     │
-│   Ephemeral ≈ Transient ✓           │
-│   Both mean "short duration"        │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Confirm the Answer',
-        content: 'The word most similar to "ephemeral" is "transient".',
-        emoji: '✅',
-        diagram: {
-          type: 'answer',
-          content: `
-┌─────────────────────────────────────┐
-│          CORRECT ANSWER             │
-├─────────────────────────────────────┤
-│                                     │
-│   EPHEMERAL = TRANSIENT             │
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║   Both mean: temporary,     ║   │
-│   ║   short-lived, fleeting,    ║   │
-│   ║   brief, passing            ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-│   Memory tip:                       │
-│   Think of mayflies - they live     │
-│   only 24 hours. Their existence    │
-│   is EPHEMERAL/TRANSIENT.           │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      }
-    ],
-    funFact: 'Mayflies, called "ephemera" in Greek, live only 24 hours as adults!'
-  },
-  {
-    id: 'q4',
-    category: 'analytical',
-    question: 'What number comes next in the sequence: 2, 6, 12, 20, 30, ?',
-    options: [
-      '40',
-      '42',
-      '44',
-      '46'
-    ],
-    correctAnswer: 1,
-    explanation: 'The differences between consecutive numbers are 4, 6, 8, 10, 12... Each difference increases by 2. So 30 + 12 = 42.',
-    concept: 'Number Sequences',
-    tip: 'When you see a number sequence, always check the differences first!',
+    explanation: 'If A completes work in 12 days, in 1 day he does 1/12 of the work.',
+    concept: 'Time and Work',
+    tip: 'If work is done in N days, 1 day\'s work = 1/N of total work',
     difficulty: 'easy',
     steps: [
       {
-        title: 'Find the Differences',
-        content: 'Calculate the difference between each consecutive pair of numbers.',
-        emoji: '🔢',
-        diagram: {
-          type: 'sequence',
-          content: `
-┌─────────────────────────────────────┐
-│     STEP 1: FIND DIFFERENCES        │
-├─────────────────────────────────────┤
-│                                     │
-│     2    6    12    20    30    ?   │
-│       ↘  ↙  ↘  ↙  ↘  ↙  ↘  ↙       │
-│        4     6     8    10    ?     │
-│                                     │
-│   First differences:                │
-│   6-2=4, 12-6=6, 20-12=8, 30-20=10  │
-│                                     │
-│   Pattern found: 4, 6, 8, 10, ...   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Understand the Concept',
+        content: 'Total work is considered as 1 unit. If someone takes N days to complete it, they do 1/N work each day.',
+        emoji: '📐'
       },
       {
-        title: 'Identify the Pattern',
-        content: 'The differences increase by 2 each time.',
-        emoji: '📈',
-        diagram: {
-          type: 'pattern',
-          content: `
-┌─────────────────────────────────────┐
-│     STEP 2: SPOT THE PATTERN        │
-├─────────────────────────────────────┤
-│                                     │
-│   Differences: 4  →  6  →  8  → 10  │
-│                  +2    +2    +2     │
-│                                     │
-│   ▓▓▓▓░░░░░░░░░░░░  4               │
-│   ▓▓▓▓▓▓░░░░░░░░░░  6               │
-│   ▓▓▓▓▓▓▓▓░░░░░░░░  8               │
-│   ▓▓▓▓▓▓▓▓▓▓░░░░░░  10              │
-│   ▓▓▓▓▓▓▓▓▓▓▓▓░░░░  12 (next)       │
-│                                     │
-│   Each difference is +2 more        │
-│   than the previous one             │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Apply the Formula',
+        content: 'A takes 12 days to complete the work. So in 1 day, A does 1/12 of the total work.',
+        emoji: '🔧'
       },
       {
-        title: 'Calculate the Answer',
-        content: 'Add the next difference to the last number.',
-        emoji: '🧮',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│     STEP 3: FIND THE ANSWER         │
-├─────────────────────────────────────┤
-│                                     │
-│   Last number: 30                   │
-│   Next difference: 10 + 2 = 12      │
-│                                     │
-│        30                           │
-│      + 12                           │
-│      ────                           │
-│        42                           │
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║   Answer: 42                ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Bonus: The Formula',
-        content: 'This sequence follows a special mathematical pattern.',
-        emoji: '🎓',
-        diagram: {
-          type: 'formula',
-          content: `
-┌─────────────────────────────────────┐
-│       BONUS: THE FORMULA            │
-├─────────────────────────────────────┤
-│                                     │
-│   This is n(n+1) - "oblong numbers" │
-│                                     │
-│   n=1: 1×2 = 2  ✓                   │
-│   n=2: 2×3 = 6  ✓                   │
-│   n=3: 3×4 = 12 ✓                   │
-│   n=4: 4×5 = 20 ✓                   │
-│   n=5: 5×6 = 30 ✓                   │
-│   n=6: 6×7 = 42 ✓                   │
-│                                     │
-│   ┌───┬───┐  These represent        │
-│   │   │   │  rectangles with        │
-│   │   │   │  sides n and n+1        │
-│   └───┴───┘                         │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Verify the Logic',
+        content: 'If A does 1/12 work daily, in 12 days: 12 × (1/12) = 1 (complete work). This confirms our answer!',
+        emoji: '✅'
       }
     ],
-    funFact: 'These are called "oblong numbers" - each represents a rectangle with sides n and n+1!'
+    funFact: 'This concept is used in project management to calculate man-hours and team productivity!'
+  },
+  {
+    id: 'q3',
+    category: 'quantitative',
+    question: 'Cost price = ₹400, Selling price = ₹500. Find profit %.',
+    options: [
+      '20%',
+      '25%',
+      '30%',
+      '100%'
+    ],
+    correctAnswer: 1,
+    explanation: 'Profit = SP - CP = 500 - 400 = ₹100. Profit% = (Profit/CP) × 100 = (100/400) × 100 = 25%',
+    concept: 'Profit and Loss',
+    tip: 'Profit % is always calculated on Cost Price, not Selling Price!',
+    difficulty: 'easy',
+    steps: [
+      {
+        title: 'Identify Given Values',
+        content: 'Cost Price (CP) = ₹400, Selling Price (SP) = ₹500',
+        emoji: '💰'
+      },
+      {
+        title: 'Calculate Profit',
+        content: 'Profit = Selling Price - Cost Price = ₹500 - ₹400 = ₹100',
+        emoji: '📈'
+      },
+      {
+        title: 'Calculate Profit Percentage',
+        content: 'Profit% = (Profit ÷ Cost Price) × 100 = (100 ÷ 400) × 100 = 25%',
+        emoji: '✅'
+      }
+    ],
+    funFact: 'Retail businesses typically aim for 25-50% profit margins on products!'
+  },
+  {
+    id: 'q4',
+    category: 'quantitative',
+    question: 'Find the perimeter of a square of side 8 cm.',
+    options: [
+      '16 cm',
+      '24 cm',
+      '32 cm',
+      '64 cm'
+    ],
+    correctAnswer: 2,
+    explanation: 'Perimeter of a square = 4 × side = 4 × 8 = 32 cm',
+    concept: 'Area and Perimeter',
+    tip: 'A square has 4 equal sides, so perimeter = 4 × side length',
+    difficulty: 'easy',
+    steps: [
+      {
+        title: 'Understand the Shape',
+        content: 'A square has 4 equal sides. The perimeter is the total length around the shape.',
+        emoji: '📐'
+      },
+      {
+        title: 'Apply the Formula',
+        content: 'Perimeter of Square = 4 × side = 4 × 8 cm = 32 cm',
+        emoji: '📏'
+      },
+      {
+        title: 'Verify',
+        content: 'Adding all sides: 8 + 8 + 8 + 8 = 32 cm ✓',
+        emoji: '✅'
+      }
+    ],
+    funFact: 'The word "perimeter" comes from Greek: "peri" (around) + "metron" (measure)!'
   },
   {
     id: 'q5',
     category: 'quantitative',
-    question: 'A store offers a 20% discount on a shirt priced at $80. After the discount, a 10% tax is added. What is the final price?',
+    question: 'Find the volume of a cube with side 4 cm.',
     options: [
-      '$64.00',
-      '$70.40',
-      '$72.00',
-      '$74.80'
+      '16 cm³',
+      '48 cm³',
+      '64 cm³',
+      '256 cm³'
     ],
-    correctAnswer: 1,
-    explanation: 'Discount: $80 × 0.20 = $16. Price after discount: $64. Tax: $64 × 0.10 = $6.40. Final: $70.40',
-    concept: 'Percentage Calculations',
-    tip: 'Always apply discount first, then tax. Order matters!',
-    difficulty: 'medium',
+    correctAnswer: 2,
+    explanation: 'Volume of a cube = side³ = 4³ = 4 × 4 × 4 = 64 cm³',
+    concept: 'Surface Area and Volume',
+    tip: 'For a cube, Volume = side × side × side = side³',
+    difficulty: 'easy',
     steps: [
       {
-        title: 'Understand the Order',
-        content: 'Discounts are applied before taxes in retail calculations.',
-        emoji: '📋',
-        diagram: {
-          type: 'flowchart',
-          content: `
-┌─────────────────────────────────────┐
-│         CALCULATION ORDER           │
-├─────────────────────────────────────┤
-│                                     │
-│   ┌──────────────┐                  │
-│   │ Original $80 │                  │
-│   └──────┬───────┘                  │
-│          │                          │
-│          ▼ Apply 20% OFF            │
-│   ┌──────────────┐                  │
-│   │ After Disc.  │                  │
-│   └──────┬───────┘                  │
-│          │                          │
-│          ▼ Add 10% TAX              │
-│   ┌──────────────┐                  │
-│   │ Final Price  │                  │
-│   └──────────────┘                  │
-│                                     │
-│   ORDER: Discount FIRST, Tax SECOND │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Understand the Shape',
+        content: 'A cube has all sides equal. Volume measures how much space it occupies.',
+        emoji: '📦'
       },
       {
-        title: 'Calculate the Discount',
-        content: '20% off means you pay 80% of the original price.',
-        emoji: '💰',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│     STEP 1: APPLY 20% DISCOUNT      │
-├─────────────────────────────────────┤
-│                                     │
-│   Original Price: $80               │
-│                                     │
-│   Method 1: Calculate discount      │
-│   20% of $80 = $80 × 0.20 = $16     │
-│   $80 - $16 = $64                   │
-│                                     │
-│   Method 2: Direct calculation      │
-│   Pay 80% → $80 × 0.80 = $64        │
-│                                     │
-│   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ $80 (100%)   │
-│   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░ $64 (80%)    │
-│                    ↑                │
-│               20% saved             │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Apply the Formula',
+        content: 'Volume of Cube = side × side × side = 4 × 4 × 4 = 64 cm³',
+        emoji: '🧮'
       },
       {
-        title: 'Calculate the Tax',
-        content: '10% tax is added to the discounted price, not the original.',
-        emoji: '📊',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│       STEP 2: ADD 10% TAX           │
-├─────────────────────────────────────┤
-│                                     │
-│   Discounted Price: $64             │
-│                                     │
-│   Tax = $64 × 10%                   │
-│   Tax = $64 × 0.10                  │
-│   Tax = $6.40                       │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ Price:     $64.00           │   │
-│   │ + Tax:    + $6.40           │   │
-│   │           ─────────         │   │
-│   │ Total:     $70.40           │   │
-│   └─────────────────────────────┘   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Verify with Shortcut',
-        content: 'Multiply by 0.80 (discount) then by 1.10 (tax) in one step.',
-        emoji: '✅',
-        diagram: {
-          type: 'verification',
-          content: `
-┌─────────────────────────────────────┐
-│       SHORTCUT VERIFICATION         │
-├─────────────────────────────────────┤
-│                                     │
-│   Combine both operations:          │
-│                                     │
-│   $80 × 0.80 × 1.10 = ?             │
-│                                     │
-│   $80 × 0.80 = $64   (after disc.)  │
-│   $64 × 1.10 = $70.40 (after tax)   │
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║   Final Price = $70.40      ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-│   Pro tip: 0.80 × 1.10 = 0.88       │
-│   So final = $80 × 0.88 = $70.40    │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Visualize',
+        content: 'Think of filling the cube with 1cm³ unit cubes: 4 layers × 4 rows × 4 columns = 64 cubes',
+        emoji: '✅'
       }
     ],
-    funFact: 'You can combine both: $80 × 0.80 × 1.10 = $70.40 in one calculation!'
+    funFact: 'A standard Rubik\'s Cube is approximately 5.7 cm on each side!'
   },
   {
     id: 'q6',
     category: 'logical',
-    question: 'If you rearrange the letters "CIFAIPC" you would have the name of a:',
+    question: 'A is the brother of B. B is the sister of C. How is A related to C?',
     options: [
-      'City',
-      'Animal',
-      'Ocean',
-      'Country'
+      'Sister',
+      'Brother',
+      'Father',
+      'Cannot be determined'
     ],
-    correctAnswer: 2,
-    explanation: 'CIFAIPC rearranges to PACIFIC, which is an ocean (the Pacific Ocean).',
-    concept: 'Pattern Recognition - Anagrams',
-    tip: 'Look for common letter combinations like "IC" or "FIC" that appear in familiar words.',
+    correctAnswer: 1,
+    explanation: 'A is B\'s brother (so A is male). B is C\'s sister. This means A and C are siblings, and since A is male, A is C\'s brother.',
+    concept: 'Blood Relations',
+    tip: 'Draw a family tree diagram to visualize relationships clearly!',
     difficulty: 'easy',
     steps: [
       {
-        title: 'Identify the Letters',
-        content: 'First, list all the available letters and note any duplicates.',
-        emoji: '🔤',
-        diagram: {
-          type: 'letters',
-          content: `
-┌─────────────────────────────────────┐
-│        AVAILABLE LETTERS            │
-├─────────────────────────────────────┤
-│                                     │
-│   C I F A I P C                     │
-│                                     │
-│   ┌────┬────────────┐               │
-│   │ C  │ appears 2× │               │
-│   │ I  │ appears 2× │               │
-│   │ F  │ appears 1× │               │
-│   │ A  │ appears 1× │               │
-│   │ P  │ appears 1× │               │
-│   └────┴────────────┘               │
-│                                     │
-│   Total: 7 letters                  │
-│   Word length: 7 letters            │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Analyze First Statement',
+        content: 'A is the brother of B. This tells us A is male and A & B are siblings.',
+        emoji: '👨'
       },
       {
-        title: 'Look for Patterns',
-        content: 'Search for common letter combinations that might appear in geographical names.',
-        emoji: '🔍',
-        diagram: {
-          type: 'patterns',
-          content: `
-┌─────────────────────────────────────┐
-│        FIND PATTERNS                │
-├─────────────────────────────────────┤
-│                                     │
-│   Common endings to try:            │
-│                                     │
-│   -IC  ✓ (C and I available)        │
-│   -FIC ✓ (F, I, C available)        │
-│                                     │
-│   Words ending in -IFIC or -ACIFIC? │
-│                                     │
-│   P + A + C + I + F + I + C         │
-│   ↓                                 │
-│   P-A-C-I-F-I-C                     │
-│                                     │
-│   This spells PACIFIC!              │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Analyze Second Statement',
+        content: 'B is the sister of C. This tells us B is female and B & C are siblings.',
+        emoji: '👩'
       },
       {
-        title: 'Verify the Word',
-        content: 'Check that PACIFIC uses exactly the letters we have.',
-        emoji: '✓',
-        diagram: {
-          type: 'verification',
-          content: `
-┌─────────────────────────────────────┐
-│        VERIFY THE WORD              │
-├─────────────────────────────────────┤
-│                                     │
-│   PACIFIC                           │
-│   │││││││                           │
-│   P A C I F I C                     │
-│                                     │
-│   Original: C I F A I P C           │
-│   Sorted:   A C C F I I P           │
-│                                     │
-│   PACIFIC sorted: A C C F I I P     │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ ✓ All letters match!        │   │
-│   │ ✓ Uses every letter once    │   │
-│   └─────────────────────────────┘   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Identify the Category',
-        content: 'PACIFIC is the name of an ocean - the largest on Earth!',
-        emoji: '🌊',
-        diagram: {
-          type: 'answer',
-          content: `
-┌─────────────────────────────────────┐
-│          THE ANSWER                 │
-├─────────────────────────────────────┤
-│                                     │
-│       🌍 PACIFIC OCEAN 🌍            │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │   ~~~~~~~~~~~~~~~~~~~       │   │
-│   │  ~ PACIFIC  OCEAN ~         │   │
-│   │   ~~~~~~~~~~~~~~~~~~~       │   │
-│   │      (largest ocean)        │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   Category:                         │
-│   ❌ City    ❌ Animal              │
-│   ✓ OCEAN   ❌ Country             │
-│                                     │
-│   Answer: Ocean                     │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Connect the Relations',
+        content: 'If A is B\'s sibling and B is C\'s sibling, then A and C are also siblings. Since A is male, A is C\'s brother.',
+        emoji: '✅'
       }
     ],
-    funFact: 'The Pacific Ocean covers more area than all land on Earth combined!'
+    funFact: 'Blood relation puzzles are a favorite in competitive exams across the world!'
   },
   {
     id: 'q7',
-    category: 'verbal',
-    question: 'Choose the word that is most OPPOSITE in meaning to "BENEVOLENT":',
+    category: 'logical',
+    question: 'If today is Monday, what day will it be after 3 days?',
     options: [
-      'Generous',
-      'Malicious',
-      'Charitable',
-      'Friendly'
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
     ],
     correctAnswer: 1,
-    explanation: 'Benevolent means kind and well-meaning. Malicious means intending to do harm - the opposite meaning.',
-    concept: 'Vocabulary - Antonyms',
-    tip: 'Break down words: "bene" means good, "mal" means bad.',
-    difficulty: 'medium',
+    explanation: 'Monday + 3 days = Tuesday (1), Wednesday (2), Thursday (3). So the answer is Thursday.',
+    concept: 'Calendar Puzzles',
+    tip: 'Count the days forward from the current day, not including the current day!',
+    difficulty: 'easy',
     steps: [
       {
-        title: 'Understand Word Roots',
-        content: 'Latin roots help us decode word meanings.',
-        emoji: '📚',
-        diagram: {
-          type: 'roots',
-          content: `
-┌─────────────────────────────────────┐
-│          WORD ROOTS                 │
-├─────────────────────────────────────┤
-│                                     │
-│   BENEVOLENT                        │
-│   ┌────────┬────────────┐           │
-│   │ BENE-  │ = good     │           │
-│   │ -VOL-  │ = will     │           │
-│   │ -ENT   │ = having   │           │
-│   └────────┴────────────┘           │
-│                                     │
-│   = "Having good will"              │
-│   = Kind, generous, well-meaning    │
-│                                     │
-│   Related words:                    │
-│   • Benefit (good outcome)          │
-│   • Benign (not harmful)            │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Identify Starting Point',
+        content: 'Today is Monday. We need to count 3 days forward.',
+        emoji: '📅'
       },
       {
-        title: 'Identify Synonyms to Eliminate',
-        content: 'Three options are similar to benevolent - not opposites!',
-        emoji: '❌',
-        diagram: {
-          type: 'elimination',
-          content: `
-┌─────────────────────────────────────┐
-│        ELIMINATE SYNONYMS           │
-├─────────────────────────────────────┤
-│                                     │
-│   BENEVOLENT = kind, well-meaning   │
-│                                     │
-│   A) Generous                       │
-│      = giving freely                │
-│      ❌ Similar meaning (SYNONYM)   │
-│                                     │
-│   C) Charitable                     │
-│      = generous to those in need    │
-│      ❌ Similar meaning (SYNONYM)   │
-│                                     │
-│   D) Friendly                       │
-│      = kind, showing goodwill       │
-│      ❌ Similar meaning (SYNONYM)   │
-│                                     │
-│   These are NOT opposites!          │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Count Forward',
+        content: 'Day 1: Tuesday, Day 2: Wednesday, Day 3: Thursday',
+        emoji: '➡️'
       },
       {
-        title: 'Analyze "Malicious"',
-        content: 'Malicious has the opposite root "mal-" meaning bad.',
-        emoji: '🔍',
-        diagram: {
-          type: 'comparison',
-          content: `
-┌─────────────────────────────────────┐
-│       COMPARE THE WORDS             │
-├─────────────────────────────────────┤
-│                                     │
-│   BENEVOLENT         MALICIOUS      │
-│   ┌──────────┐      ┌──────────┐    │
-│   │ BENE-    │  vs  │ MAL-     │    │
-│   │ = good   │      │ = bad    │    │
-│   └──────────┘      └──────────┘    │
-│                                     │
-│   "Good will"   ←→   "Bad intent"   │
-│   Kind          ←→   Harmful        │
-│   Helpful       ←→   Destructive    │
-│                                     │
-│   Related "mal-" words:             │
-│   • Malware (bad software)          │
-│   • Malfunction (bad function)      │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Confirm the Antonym',
-        content: 'Malicious is the exact opposite of benevolent.',
-        emoji: '✅',
-        diagram: {
-          type: 'answer',
-          content: `
-┌─────────────────────────────────────┐
-│         CORRECT ANSWER              │
-├─────────────────────────────────────┤
-│                                     │
-│   BENEVOLENT ←──────→ MALICIOUS     │
-│      ↑                    ↑         │
-│   Good will           Bad intent    │
-│   Kindness            Cruelty       │
-│   Helpful             Harmful       │
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║  Answer: B) Malicious       ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-│   MEMORY TIP:                       │
-│   BENE = GOOD (benefit, benign)     │
-│   MAL = BAD (malware, malign)       │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Confirm Answer',
+        content: 'After 3 days from Monday, it will be Thursday.',
+        emoji: '✅'
       }
     ],
-    funFact: 'Both words have Latin roots: "bene" means good, "mal" means bad!'
+    funFact: 'The 7-day week has been used for over 4,000 years, originating in ancient Babylon!'
   },
   {
     id: 'q8',
-    category: 'analytical',
-    question: 'A cube is painted red on all sides and then cut into 27 smaller equal cubes. How many smaller cubes have exactly two sides painted?',
+    category: 'verbal',
+    question: 'Choose the correct sentence:',
     options: [
-      '6',
-      '8',
-      '12',
-      '24'
+      'She don\'t like coffee',
+      'She doesn\'t likes coffee',
+      'She doesn\'t like coffee',
+      'She didn\'t likes coffee'
     ],
     correctAnswer: 2,
-    explanation: 'A 3×3×3 cube has 12 edge cubes (not corners). Each edge has 1 cube with exactly 2 painted sides.',
-    concept: 'Geometry - 3D Shapes',
-    tip: 'Visualize: Corners=3 sides, Edges=2 sides, Faces=1 side, Center=0 sides.',
-    difficulty: 'hard',
+    explanation: 'With third person singular (she/he/it), we use "doesn\'t" + base form of verb (like, not likes).',
+    concept: 'Sentence Correction',
+    tip: 'Remember: doesn\'t/don\'t is already the helping verb, so the main verb stays in base form!',
+    difficulty: 'easy',
     steps: [
       {
-        title: 'Understand the Structure',
-        content: 'A cube cut into 27 pieces is a 3×3×3 arrangement.',
-        emoji: '🎲',
-        diagram: {
-          type: '3d-cube',
-          content: `
-┌─────────────────────────────────────┐
-│        3×3×3 CUBE STRUCTURE         │
-├─────────────────────────────────────┤
-│                                     │
-│       ┌───┬───┬───┐                 │
-│      /   /   /   /│                 │
-│     ┌───┬───┬───┐ │                 │
-│    /   /   /   /│ ┤                 │
-│   ┌───┬───┬───┐ │/│                 │
-│   │   │   │   │ ┤ │                 │
-│   ├───┼───┼───┤/│ ┤                 │
-│   │   │   │   │ ┤/│                 │
-│   ├───┼───┼───┤/│ │                 │
-│   │   │   │   │ ┤/                  │
-│   └───┴───┴───┘/                    │
-│                                     │
-│   Total small cubes: 3×3×3 = 27     │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Identify the Subject',
+        content: '"She" is third person singular, so we need "doesn\'t" (not "don\'t").',
+        emoji: '👤'
       },
       {
-        title: 'Identify Position Types',
-        content: 'Different positions have different numbers of painted faces.',
-        emoji: '📐',
-        diagram: {
-          type: 'positions',
-          content: `
-┌─────────────────────────────────────┐
-│      CUBE POSITION TYPES            │
-├─────────────────────────────────────┤
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ CORNER cubes (8 total)      │   │
-│   │ → 3 faces painted           │   │
-│   │ → At cube corners           │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ EDGE cubes (12 total)       │   │
-│   │ → 2 faces painted ← TARGET! │   │
-│   │ → On edges, not corners     │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ FACE cubes (6 total)        │   │
-│   │ → 1 face painted            │   │
-│   │ → Center of each face       │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ CENTER cube (1 total)       │   │
-│   │ → 0 faces painted           │   │
-│   │ → Hidden inside             │   │
-│   └─────────────────────────────┘   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Apply Grammar Rule',
+        content: 'After doesn\'t/don\'t, the main verb stays in base form (like), not "likes".',
+        emoji: '📝'
       },
       {
-        title: 'Count Edge Cubes',
-        content: 'A cube has 12 edges. Each edge has 1 middle cube (not at corners).',
-        emoji: '🔢',
-        diagram: {
-          type: 'edges',
-          content: `
-┌─────────────────────────────────────┐
-│         COUNTING EDGES              │
-├─────────────────────────────────────┤
-│                                     │
-│          ●─────○─────●              │
-│         /│    /     /│              │
-│        ○ ○   ○     ○ ○              │
-│       /  │  /     /  │              │
-│      ●───○─┼──●  ●   │              │
-│      │   │ │  │  │   ●              │
-│      ○   ●─○──┼──○  /               │
-│      │  /  │  │  │ ○                │
-│      │ ○   │  │  │/                 │
-│      ●─────○─────●                  │
-│                                     │
-│   ● = Corner (3 painted faces)      │
-│   ○ = Edge (2 painted faces)        │
-│                                     │
-│   12 edges × 1 cube each = 12       │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Verify the Answer',
-        content: 'Check that all 27 cubes are accounted for.',
-        emoji: '✅',
-        diagram: {
-          type: 'verification',
-          content: `
-┌─────────────────────────────────────┐
-│         VERIFICATION                │
-├─────────────────────────────────────┤
-│                                     │
-│   Position    Painted   Count       │
-│   ──────────  ───────   ─────       │
-│   Corners     3 faces     8         │
-│   Edges       2 faces    12 ←       │
-│   Faces       1 face      6         │
-│   Center      0 faces     1         │
-│                         ─────       │
-│   Total                  27 ✓       │
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║  Answer: 12 cubes have      ║   │
-│   ║  exactly 2 painted sides    ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Verify Each Option',
+        content: 'A) Wrong - "don\'t" with she. B) Wrong - "likes" after doesn\'t. C) Correct! D) Wrong - "likes" after didn\'t.',
+        emoji: '✅'
       }
     ],
-    funFact: 'The Rubik\'s Cube uses this same 3×3×3 structure with 27 smaller cubes!'
+    funFact: 'English is one of the few languages where verbs change based on the subject!'
   },
   {
     id: 'q9',
-    category: 'quantitative',
-    question: 'If the ratio of boys to girls in a class is 3:5 and there are 40 students in total, how many girls are there?',
+    category: 'verbal',
+    question: '"He go to school every day." Which part has the error?',
     options: [
-      '15',
-      '20',
-      '24',
-      '25'
+      'He',
+      'go',
+      'to school',
+      'every day'
     ],
-    correctAnswer: 3,
-    explanation: 'Total ratio parts = 3+5 = 8. Each part = 40÷8 = 5. Girls = 5×5 = 25.',
-    concept: 'Ratios and Proportions',
-    tip: 'First find total parts, then find value per part, then multiply!',
+    correctAnswer: 1,
+    explanation: 'With third person singular "He", the verb should be "goes" not "go". Correct: He goes to school every day.',
+    concept: 'Error Spotting',
+    tip: 'Third person singular subjects (he/she/it) require -s/-es ending on present tense verbs!',
     difficulty: 'easy',
     steps: [
       {
-        title: 'Understand Ratios',
-        content: 'A ratio compares two quantities. Here, for every 3 boys, there are 5 girls.',
-        emoji: '📊',
-        diagram: {
-          type: 'ratio',
-          content: `
-┌─────────────────────────────────────┐
-│        UNDERSTANDING RATIOS         │
-├─────────────────────────────────────┤
-│                                     │
-│   Ratio of Boys : Girls = 3 : 5     │
-│                                     │
-│   This means:                       │
-│   ┌─────────────────────────────┐   │
-│   │ For every 8 students:       │   │
-│   │   👦👦👦     = 3 boys        │   │
-│   │   👧👧👧👧👧 = 5 girls       │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   The ratio tells us the PARTS,     │
-│   not the actual numbers!           │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Identify the Subject',
+        content: '"He" is third person singular. This affects the verb form.',
+        emoji: '👤'
       },
       {
-        title: 'Find Total Parts',
-        content: 'Add the ratio numbers to get total parts.',
-        emoji: '➕',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│       STEP 1: TOTAL PARTS           │
-├─────────────────────────────────────┤
-│                                     │
-│   Boys  : Girls                     │
-│     3   :   5                       │
-│                                     │
-│   Total parts = 3 + 5 = 8 parts     │
-│                                     │
-│   ▓▓▓░░░░░  (8 equal parts)         │
-│   ↑↑↑ ↑↑↑↑↑                         │
-│   3    5                            │
-│   boys girls                        │
-│                                     │
-│   These 8 parts = 40 students       │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Check Subject-Verb Agreement',
+        content: 'Present tense with he/she/it requires the verb to have -s/-es ending. "go" should be "goes".',
+        emoji: '🔍'
       },
       {
-        title: 'Find Value Per Part',
-        content: 'Divide total students by total parts.',
-        emoji: '➗',
-        diagram: {
-          type: 'calculation',
-          content: `
-┌─────────────────────────────────────┐
-│      STEP 2: VALUE PER PART         │
-├─────────────────────────────────────┤
-│                                     │
-│   Total students = 40               │
-│   Total parts = 8                   │
-│                                     │
-│   Value of 1 part = 40 ÷ 8          │
-│                   = 5 students      │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │ Each "part" in the ratio    │   │
-│   │ represents 5 students       │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   1 part = 5 students               │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Calculate Number of Girls',
-        content: 'Multiply girls\' parts by value per part.',
-        emoji: '✅',
-        diagram: {
-          type: 'answer',
-          content: `
-┌─────────────────────────────────────┐
-│     STEP 3: COUNT THE GIRLS         │
-├─────────────────────────────────────┤
-│                                     │
-│   Girls have 5 parts                │
-│   Each part = 5 students            │
-│                                     │
-│   Girls = 5 × 5 = 25 students       │
-│                                     │
-│   Verification:                     │
-│   Boys = 3 × 5 = 15 students        │
-│   Girls = 5 × 5 = 25 students       │
-│   Total = 15 + 25 = 40 ✓            │
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║  Answer: 25 girls           ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Correct the Sentence',
+        content: '"He goes to school every day." The error is in part B (go).',
+        emoji: '✅'
       }
     ],
-    funFact: 'Ratios are used everywhere - from recipes to mixing paint colors!'
+    funFact: 'Subject-verb agreement errors are among the most common mistakes in English!'
   },
   {
     id: 'q10',
-    category: 'logical',
-    question: 'Looking at the series: 1, 4, 9, 16, 25, 36, ... what type of numbers are these?',
+    category: 'quantitative',
+    question: 'A train runs at 36 km/h. Convert into m/s.',
     options: [
-      'Prime numbers',
-      'Perfect squares',
-      'Fibonacci numbers',
-      'Triangular numbers'
+      '5 m/s',
+      '10 m/s',
+      '15 m/s',
+      '36 m/s'
     ],
     correctAnswer: 1,
-    explanation: 'These are perfect squares: 1², 2², 3², 4², 5², 6², etc.',
-    concept: 'Number Patterns',
-    tip: 'Perfect squares are numbers that can be expressed as n×n.',
+    explanation: 'To convert km/h to m/s, multiply by 5/18. So 36 × 5/18 = 10 m/s.',
+    concept: 'Speed Conversion',
+    tip: 'km/h to m/s: multiply by 5/18. m/s to km/h: multiply by 18/5.',
     difficulty: 'easy',
     steps: [
       {
-        title: 'Analyze Each Number',
-        content: 'Look at what each number in the sequence equals.',
-        emoji: '🔍',
-        diagram: {
-          type: 'analysis',
-          content: `
-┌─────────────────────────────────────┐
-│        ANALYZE THE SEQUENCE         │
-├─────────────────────────────────────┤
-│                                     │
-│   Sequence: 1, 4, 9, 16, 25, 36     │
-│                                     │
-│   Let's factor each:                │
-│   ┌─────────────────────────────┐   │
-│   │  1 = 1 × 1 = 1²             │   │
-│   │  4 = 2 × 2 = 2²             │   │
-│   │  9 = 3 × 3 = 3²             │   │
-│   │ 16 = 4 × 4 = 4²             │   │
-│   │ 25 = 5 × 5 = 5²             │   │
-│   │ 36 = 6 × 6 = 6²             │   │
-│   └─────────────────────────────┘   │
-│                                     │
-│   Pattern: Each is n × n!           │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Understand the Conversion',
+        content: '1 km = 1000 m, 1 hour = 3600 seconds. So 1 km/h = 1000/3600 = 5/18 m/s.',
+        emoji: '📐'
       },
       {
-        title: 'Visualize as Squares',
-        content: 'Perfect squares form actual square shapes!',
-        emoji: '⬛',
-        diagram: {
-          type: 'visual',
-          content: `
-┌─────────────────────────────────────┐
-│       VISUAL REPRESENTATION         │
-├─────────────────────────────────────┤
-│                                     │
-│   1 = 1²          4 = 2²            │
-│   ┌─┐             ┌─┬─┐             │
-│   │■│             │■│■│             │
-│   └─┘             ├─┼─┤             │
-│                   │■│■│             │
-│                   └─┴─┘             │
-│                                     │
-│   9 = 3²          16 = 4²           │
-│   ┌─┬─┬─┐         ┌─┬─┬─┬─┐         │
-│   │■│■│■│         │■│■│■│■│         │
-│   ├─┼─┼─┤         ├─┼─┼─┼─┤         │
-│   │■│■│■│         │■│■│■│■│         │
-│   ├─┼─┼─┤         ├─┼─┼─┼─┤         │
-│   │■│■│■│         │■│■│■│■│         │
-│   └─┴─┴─┘         ├─┼─┼─┼─┤         │
-│                   │■│■│■│■│         │
-│                   └─┴─┴─┴─┘         │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Apply the Formula',
+        content: 'Speed in m/s = Speed in km/h × (5/18) = 36 × 5/18 = 180/18 = 10 m/s',
+        emoji: '🧮'
       },
       {
-        title: 'Eliminate Other Options',
-        content: 'Compare with other number types to confirm.',
-        emoji: '❌',
-        diagram: {
-          type: 'comparison',
-          content: `
-┌─────────────────────────────────────┐
-│       COMPARE NUMBER TYPES          │
-├─────────────────────────────────────┤
-│                                     │
-│   A) Prime numbers:                 │
-│      2, 3, 5, 7, 11, 13...          │
-│      ❌ Not matching                │
-│                                     │
-│   B) Perfect squares:               │
-│      1, 4, 9, 16, 25, 36...         │
-│      ✓ MATCHES EXACTLY!             │
-│                                     │
-│   C) Fibonacci numbers:             │
-│      1, 1, 2, 3, 5, 8, 13...        │
-│      ❌ Not matching                │
-│                                     │
-│   D) Triangular numbers:            │
-│      1, 3, 6, 10, 15, 21...         │
-│      ❌ Not matching                │
-│                                     │
-└─────────────────────────────────────┘`
-        }
-      },
-      {
-        title: 'Confirm the Answer',
-        content: 'These are perfect squares - numbers formed by n × n.',
-        emoji: '✅',
-        diagram: {
-          type: 'answer',
-          content: `
-┌─────────────────────────────────────┐
-│         CORRECT ANSWER              │
-├─────────────────────────────────────┤
-│                                     │
-│   ╔═════════════════════════════╗   │
-│   ║  Answer: Perfect Squares    ║   │
-│   ╚═════════════════════════════╝   │
-│                                     │
-│   Definition:                       │
-│   A perfect square is an integer    │
-│   that is the square of another     │
-│   integer: n × n = n²               │
-│                                     │
-│   The sequence continues:           │
-│   7² = 49                           │
-│   8² = 64                           │
-│   9² = 81                           │
-│   10² = 100                         │
-│   ...                               │
-│                                     │
-└─────────────────────────────────────┘`
-        }
+        title: 'Verify',
+        content: '10 m/s × 3600 seconds = 36,000 m = 36 km per hour ✓',
+        emoji: '✅'
       }
     ],
-    funFact: 'Perfect squares appear everywhere - from floor tiles to chess boards!'
+    funFact: 'Usain Bolt\'s top speed of 44.72 km/h equals about 12.4 m/s!'
   }
 ];
 
-export const getCategoryIcon = (category: string): string => {
-  switch (category) {
-    case 'quantitative':
-      return '📊';
-    case 'logical':
-      return '🧠';
-    case 'verbal':
-      return '📝';
-    case 'analytical':
-      return '🔍';
-    default:
-      return '📚';
-  }
+export const getCategoryLabel = (category: string): string => {
+  const labels: Record<string, string> = {
+    quantitative: 'Quantitative Aptitude',
+    logical: 'Logical Reasoning',
+    verbal: 'Verbal Ability',
+    analytical: 'Analytical Ability'
+  };
+  return labels[category] || category;
 };
 
-export const getCategoryLabel = (category: string): string => {
-  switch (category) {
-    case 'quantitative':
-      return 'Quantitative';
-    case 'logical':
-      return 'Logical Reasoning';
-    case 'verbal':
-      return 'Verbal Ability';
-    case 'analytical':
-      return 'Analytical';
-    default:
-      return category;
-  }
+export const getCategoryColor = (category: string): string => {
+  const colors: Record<string, string> = {
+    quantitative: 'from-green-primary to-green-dark',
+    logical: 'from-green-dark to-green-muted',
+    verbal: 'from-green-muted to-green-soft',
+    analytical: 'from-green-soft to-green-light'
+  };
+  return colors[category] || 'from-gray-500 to-gray-600';
 };
 
 export const getDifficultyColor = (difficulty: string): string => {
-  switch (difficulty) {
-    case 'easy':
-      return 'text-success';
-    case 'medium':
-      return 'text-accent';
-    case 'hard':
-      return 'text-warning';
-    default:
-      return 'text-muted-foreground';
-  }
+  const colors: Record<string, string> = {
+    easy: 'text-green-dark',
+    medium: 'text-amber-600',
+    hard: 'text-red-500'
+  };
+  return colors[difficulty] || 'text-muted-foreground';
 };
