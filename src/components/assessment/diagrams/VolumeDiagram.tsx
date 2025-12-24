@@ -10,44 +10,43 @@ const VolumeDiagram = ({ step, side = 4 }: VolumeDiagramProps) => {
   
   return (
     <div className="diagram-container">
-      <div className="diagram-scene relative overflow-hidden">
+      <div className="diagram-scene relative bg-gradient-to-b from-blue-50 to-green-50 dark:from-green-900/20 dark:to-green-950/30">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-soft/20 via-bg-card to-green-light/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-200/20 to-transparent dark:from-blue-900/10" />
         
-        {/* 3D Cube */}
+        {/* 3D Cube in center */}
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{ perspective: '500px' }}
-          initial={{ rotateX: 0, rotateY: 0 }}
-          animate={{ rotateY: step >= 1 ? [0, 10, -10, 0] : 0 }}
-          transition={{ duration: 4, repeat: Infinity }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
         >
-          <svg width="220" height="220" viewBox="0 0 220 220">
+          <svg width="180" height="180" viewBox="0 0 180 180">
             {/* Back face */}
             <motion.polygon
-              points="80,30 180,30 180,130 80,130"
+              points="65,25 145,25 145,105 65,105"
               fill="hsl(var(--green-muted))"
               stroke="hsl(var(--green-dark))"
               strokeWidth="2"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
+              animate={{ opacity: 0.5 }}
               transition={{ delay: 0.2 }}
             />
             
             {/* Left face */}
             <motion.polygon
-              points="30,80 80,30 80,130 30,180"
+              points="25,65 65,25 65,105 25,145"
               fill="hsl(var(--green-soft))"
               stroke="hsl(var(--green-dark))"
               strokeWidth="2"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.8 }}
+              animate={{ opacity: 0.7 }}
               transition={{ delay: 0.3 }}
             />
             
             {/* Top face */}
             <motion.polygon
-              points="80,30 180,30 130,80 30,80"
+              points="65,25 145,25 105,65 25,65"
               fill="hsl(var(--green-light))"
               stroke="hsl(var(--green-dark))"
               strokeWidth="2"
@@ -58,11 +57,10 @@ const VolumeDiagram = ({ step, side = 4 }: VolumeDiagramProps) => {
             
             {/* Front face */}
             <motion.polygon
-              points="30,80 130,80 130,180 30,180"
+              points="25,65 105,65 105,145 25,145"
               fill="hsl(var(--green-primary))"
               stroke="hsl(var(--green-dark))"
               strokeWidth="2"
-              opacity="0.9"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.9 }}
               transition={{ delay: 0.5 }}
@@ -70,7 +68,7 @@ const VolumeDiagram = ({ step, side = 4 }: VolumeDiagramProps) => {
             
             {/* Right face */}
             <motion.polygon
-              points="130,80 180,30 180,130 130,180"
+              points="105,65 145,25 145,105 105,145"
               fill="hsl(var(--green-dark))"
               stroke="hsl(var(--green-primary))"
               strokeWidth="2"
@@ -80,87 +78,35 @@ const VolumeDiagram = ({ step, side = 4 }: VolumeDiagramProps) => {
             />
             
             {/* Dimension labels */}
-            {/* Width (bottom) */}
-            <motion.g initial={{ opacity: 0 }} animate={{ opacity: step >= 1 ? 1 : 0.3 }}>
-              <line x1="30" y1="190" x2="130" y2="190" stroke="hsl(var(--foreground))" strokeWidth="2" />
-              <text x="80" y="205" textAnchor="middle" className="text-sm font-bold fill-green-primary">{side} cm</text>
+            {/* Width */}
+            <motion.g initial={{ opacity: 0 }} animate={{ opacity: step >= 1 ? 1 : 0.4 }} transition={{ delay: 0.3 }}>
+              <text x="65" y="160" textAnchor="middle" className="text-xs font-bold fill-green-primary">{side} cm</text>
             </motion.g>
             
-            {/* Height (left) */}
-            <motion.g initial={{ opacity: 0 }} animate={{ opacity: step >= 1 ? 1 : 0.3 }}>
-              <line x1="20" y1="80" x2="20" y2="180" stroke="hsl(var(--foreground))" strokeWidth="2" />
-              <text x="10" y="135" textAnchor="middle" className="text-sm font-bold fill-green-primary" transform="rotate(-90, 10, 135)">{side} cm</text>
+            {/* Height */}
+            <motion.g initial={{ opacity: 0 }} animate={{ opacity: step >= 1 ? 1 : 0.4 }} transition={{ delay: 0.5 }}>
+              <text x="12" y="105" textAnchor="middle" className="text-xs font-bold fill-green-primary" transform="rotate(-90, 12, 105)">{side} cm</text>
             </motion.g>
             
-            {/* Depth (top) */}
-            <motion.g initial={{ opacity: 0 }} animate={{ opacity: step >= 1 ? 1 : 0.3 }}>
-              <line x1="135" y1="75" x2="185" y2="25" stroke="hsl(var(--foreground))" strokeWidth="2" />
-              <text x="170" y="40" textAnchor="middle" className="text-sm font-bold fill-green-primary">{side} cm</text>
+            {/* Depth */}
+            <motion.g initial={{ opacity: 0 }} animate={{ opacity: step >= 1 ? 1 : 0.4 }} transition={{ delay: 0.7 }}>
+              <text x="135" y="38" textAnchor="middle" className="text-xs font-bold fill-green-primary">{side} cm</text>
             </motion.g>
           </svg>
         </motion.div>
 
-        {/* Unit cubes visualization */}
-        {step >= 2 && (
-          <motion.div
-            className="absolute right-4 top-20 p-3 rounded-xl bg-card/95 border border-green-muted"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-          >
-            <div className="text-xs font-semibold text-muted-foreground mb-2">Unit Cubes</div>
-            <div className="grid grid-cols-4 gap-0.5">
-              {Array.from({ length: 16 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-4 h-4 bg-green-primary/60 border border-green-dark/30"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.05 * i }}
-                />
-              ))}
-            </div>
-            <div className="text-xs text-muted-foreground mt-1 text-center">One layer = {side}×{side} = {side*side}</div>
-          </motion.div>
-        )}
-
-        {/* Layers visualization */}
-        {step >= 2 && (
-          <motion.div
-            className="absolute bottom-4 right-4 flex gap-1"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            {Array.from({ length: side }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="w-8 h-16 rounded bg-gradient-to-t from-green-primary to-green-light border-2 border-green-dark flex items-center justify-center"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 * i }}
-              >
-                <span className="text-xs font-bold text-background">{i + 1}</span>
-              </motion.div>
-            ))}
-            <div className="flex flex-col justify-center ml-2 text-xs">
-              <span>{side} layers</span>
-              <span className="text-green-primary font-bold">× {side*side} each</span>
-            </div>
-          </motion.div>
-        )}
-
         {/* Formula Box */}
         <motion.div
-          className="absolute top-4 left-4 p-4 rounded-xl bg-card/95 border-2 border-green-primary shadow-lg"
+          className="absolute top-4 left-4 p-3 rounded-lg bg-card/95 border border-border shadow-lg max-w-[160px]"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="text-xs font-semibold text-green-muted mb-2">Volume of Cube</div>
+          <div className="text-xs font-semibold text-muted-foreground mb-1">Volume of Cube</div>
           <div className="text-sm font-bold text-foreground">
             {step === 0 && (
               <div className="space-y-1">
-                <div>Volume = side × side × side</div>
+                <div>V = side × side × side</div>
                 <div className="text-green-primary">V = s³</div>
               </div>
             )}
@@ -183,18 +129,66 @@ const VolumeDiagram = ({ step, side = 4 }: VolumeDiagramProps) => {
                 </motion.div>
               </div>
             )}
-            {step === 3 && (
+            {step >= 3 && (
               <motion.div 
-                className="p-3 bg-green-primary/10 rounded-lg text-center"
-                animate={{ boxShadow: ['0 0 0 0 rgba(15,44,31,0.4)', '0 0 0 10px rgba(15,44,31,0)', '0 0 0 0 rgba(15,44,31,0)'] }}
+                className="p-2 bg-green-primary/10 rounded text-center"
+                animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <div className="text-xs text-muted-foreground">Answer</div>
-                <div className="text-2xl text-green-primary font-bold">{volume} cm³</div>
+                <div className="text-xl text-green-primary font-bold">{volume} cm³</div>
               </motion.div>
             )}
           </div>
         </motion.div>
+
+        {/* Unit cubes visualization */}
+        {step >= 2 && (
+          <motion.div
+            className="absolute top-4 right-4 p-2 rounded-lg bg-card/95 border border-green-muted"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <div className="text-xs font-semibold text-muted-foreground mb-2">Unit Cubes</div>
+            <div className="grid grid-cols-4 gap-0.5">
+              {Array.from({ length: 16 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="w-3 h-3 bg-green-primary/60 border border-green-dark/30"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.03 * i }}
+                />
+              ))}
+            </div>
+            <div className="text-xs text-muted-foreground mt-1 text-center">1 layer = {side*side}</div>
+          </motion.div>
+        )}
+
+        {/* Layers count */}
+        {step >= 2 && (
+          <motion.div
+            className="absolute bottom-4 right-4 flex gap-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            {Array.from({ length: side }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="w-6 h-12 rounded bg-gradient-to-t from-green-primary to-green-light border border-green-dark flex items-center justify-center"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.15 * i }}
+              >
+                <span className="text-xs font-bold text-background">{i + 1}</span>
+              </motion.div>
+            ))}
+            <div className="flex flex-col justify-center ml-1 text-xs">
+              <span>{side} layers</span>
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
