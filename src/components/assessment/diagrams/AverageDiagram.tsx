@@ -27,7 +27,7 @@ const AverageDiagram = ({ step }: AverageDiagramProps) => {
 
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Original Set */}
+          {/* Original Set - Always visible */}
           <motion.div
             className="mb-3 text-center"
             initial={{ opacity: 0, y: -20 }}
@@ -52,54 +52,62 @@ const AverageDiagram = ({ step }: AverageDiagramProps) => {
             <div className="text-xs mt-1">Sum = 5 × 20 = <span className="font-bold text-green-primary">{originalSum}</span></div>
           </motion.div>
 
-          {/* Arrow */}
-          <motion.div
-            className="text-xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            ↓
-          </motion.div>
-
-          {/* New Set */}
-          <motion.div
-            className="mb-3 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="text-xs text-muted-foreground mb-1">After removing one: 4 numbers, Avg = 18</div>
-            <div className="flex gap-1 justify-center">
-              {Array.from({ length: newCount }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500 flex items-center justify-center font-bold text-xs"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5 + 0.1 * i }}
-                >
-                  ?
-                </motion.div>
-              ))}
-            </div>
-            <div className="text-xs mt-1">Sum = 4 × 18 = <span className="font-bold text-blue-500">{newSum}</span></div>
-          </motion.div>
-
-          {/* Calculation */}
-          <motion.div
-            className="p-3 rounded-xl bg-card/90 border border-border text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-          >
-            <div className="text-xs text-muted-foreground">Excluded = Original - New</div>
-            <div className="text-xs">= {originalSum} - {newSum}</div>
+          {/* Arrow - Step 1 */}
+          {step >= 1 && (
             <motion.div
-              className="text-xl font-bold text-green-primary mt-1"
-              animate={step >= 3 ? { scale: [1, 1.1, 1] } : {}}
-              transition={{ duration: 1, repeat: Infinity }}
+              className="text-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
             >
-              = {excludedNumber}
+              ↓
             </motion.div>
-          </motion.div>
+          )}
+
+          {/* New Set - Step 1 */}
+          {step >= 1 && (
+            <motion.div
+              className="mb-3 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs text-muted-foreground mb-1">After removing one: 4 numbers, Avg = 18</div>
+              <div className="flex gap-1 justify-center">
+                {Array.from({ length: newCount }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500 flex items-center justify-center font-bold text-xs"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.1 * i }}
+                  >
+                    ?
+                  </motion.div>
+                ))}
+              </div>
+              <div className="text-xs mt-1">Sum = 4 × 18 = <span className="font-bold text-blue-500">{newSum}</span></div>
+            </motion.div>
+          )}
+
+          {/* Calculation - Step 2 */}
+          {step >= 2 && (
+            <motion.div
+              className="p-3 rounded-xl bg-card/90 border border-border text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs text-muted-foreground">Excluded = Original - New</div>
+              <div className="text-xs">= {originalSum} - {newSum}</div>
+              {step >= 3 && (
+                <motion.div
+                  className="text-xl font-bold text-green-primary mt-1"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  = {excludedNumber}
+                </motion.div>
+              )}
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

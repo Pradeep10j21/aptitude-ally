@@ -14,7 +14,7 @@ const ProbabilityDiagram = ({ step }: ProbabilityDiagramProps) => {
       <div className="diagram-scene relative bg-gradient-to-br from-green-soft/20 via-background to-green-light/20">
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Bag */}
+          {/* Bag - Always visible */}
           <motion.div
             className="relative mb-4"
             initial={{ opacity: 0, y: -20 }}
@@ -52,7 +52,7 @@ const ProbabilityDiagram = ({ step }: ProbabilityDiagramProps) => {
             </div>
           </motion.div>
 
-          {/* Count */}
+          {/* Count - Always visible */}
           <motion.div
             className="flex gap-2 mb-3"
             initial={{ opacity: 0 }}
@@ -74,48 +74,54 @@ const ProbabilityDiagram = ({ step }: ProbabilityDiagramProps) => {
             </div>
           </motion.div>
 
-          {/* Calculation */}
-          <motion.div
-            className="p-3 rounded-xl bg-card/90 border border-border text-center mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="text-xs text-muted-foreground mb-1">P(Red) = Favorable / Total</div>
-            <div className="text-sm font-mono">= <span className="text-red-500">{red}</span> / {total}</div>
+          {/* Calculation - Step 1 */}
+          {step >= 1 && (
             <motion.div
-              className="text-lg font-bold text-green-primary mt-1"
-              animate={step >= 2 ? { scale: [1, 1.1, 1] } : {}}
-              transition={{ duration: 1, repeat: Infinity }}
+              className="p-3 rounded-xl bg-card/90 border border-border text-center mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
             >
-              = 2/5
+              <div className="text-xs text-muted-foreground mb-1">P(Red) = Favorable / Total</div>
+              <div className="text-sm font-mono">= <span className="text-red-500">{red}</span> / {total}</div>
+              {step >= 2 && (
+                <motion.div
+                  className="text-lg font-bold text-green-primary mt-1"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  = 2/5
+                </motion.div>
+              )}
             </motion.div>
-          </motion.div>
+          )}
 
-          {/* Probability Bar */}
-          <motion.div
-            className="w-full max-w-xs"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0 }}
-          >
-            <div className="h-5 rounded-full overflow-hidden flex">
-              <motion.div
-                className="bg-red-500 flex items-center justify-center text-xs text-white font-bold"
-                initial={{ width: 0 }}
-                animate={{ width: `${(red / total) * 100}%` }}
-                transition={{ duration: 0.5 }}
-              >
-                40%
-              </motion.div>
-              <motion.div
-                className="bg-blue-500 flex items-center justify-center text-xs text-white font-bold"
-                initial={{ width: 0 }}
-                animate={{ width: `${(blue / total) * 100}%` }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                60%
-              </motion.div>
-            </div>
-          </motion.div>
+          {/* Probability Bar - Step 2 */}
+          {step >= 2 && (
+            <motion.div
+              className="w-full max-w-xs"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="h-5 rounded-full overflow-hidden flex">
+                <motion.div
+                  className="bg-red-500 flex items-center justify-center text-xs text-white font-bold"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${(red / total) * 100}%` }}
+                  transition={{ duration: 0.5 }}
+                >
+                  40%
+                </motion.div>
+                <motion.div
+                  className="bg-blue-500 flex items-center justify-center text-xs text-white font-bold"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${(blue / total) * 100}%` }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  60%
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

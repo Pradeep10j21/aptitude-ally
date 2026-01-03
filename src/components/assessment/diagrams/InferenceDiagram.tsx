@@ -36,7 +36,7 @@ const InferenceDiagram = ({ step }: InferenceDiagramProps) => {
 
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Clues */}
+          {/* Clues - Always visible */}
           <motion.div
             className="p-3 rounded-xl bg-card/95 border border-border mb-3 text-center max-w-sm"
             initial={{ opacity: 0, y: -20 }}
@@ -49,48 +49,54 @@ const InferenceDiagram = ({ step }: InferenceDiagramProps) => {
             <div className="text-xs text-muted-foreground">What time of day?</div>
           </motion.div>
 
-          {/* Clue Analysis */}
-          <motion.div
-            className="flex gap-2 mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="p-2 rounded-lg bg-orange-500/20 border border-orange-500 text-center">
-              <div className="text-xl mb-1">🌅</div>
-              <div className="text-xs font-bold">Clue 1</div>
-              <div className="text-xs text-orange-500">Orange sky</div>
-            </div>
-            <div className="p-2 rounded-lg bg-green-primary/20 border border-green-primary text-center">
-              <div className="text-xl mb-1">🐦</div>
-              <div className="text-xs font-bold">Clue 2</div>
-              <div className="text-xs text-green-primary">Birds returning</div>
-            </div>
-          </motion.div>
-
-          {/* Logic */}
-          <motion.div
-            className="p-2 rounded-lg bg-accent/10 border border-accent/30 text-center mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-          >
-            <div className="text-xs">
-              Orange sky + Birds going home = <span className="font-bold text-accent">EVENING</span>
-            </div>
-          </motion.div>
-
-          {/* Answer */}
-          <motion.div
-            className="px-4 py-2 rounded-xl bg-green-primary text-primary-foreground font-bold"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: step >= 3 ? 1 : 0, scale: step >= 3 ? 1 : 0.9 }}
-          >
+          {/* Clue Analysis - Step 1 */}
+          {step >= 1 && (
             <motion.div
-              animate={step >= 3 ? { scale: [1, 1.05, 1] } : {}}
-              transition={{ duration: 1, repeat: Infinity }}
+              className="flex gap-2 mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
             >
-              🌇 Evening
+              <div className="p-2 rounded-lg bg-orange-500/20 border border-orange-500 text-center">
+                <div className="text-xl mb-1">🌅</div>
+                <div className="text-xs font-bold">Clue 1</div>
+                <div className="text-xs text-orange-500">Orange sky</div>
+              </div>
+              <div className="p-2 rounded-lg bg-green-primary/20 border border-green-primary text-center">
+                <div className="text-xl mb-1">🐦</div>
+                <div className="text-xs font-bold">Clue 2</div>
+                <div className="text-xs text-green-primary">Birds returning</div>
+              </div>
             </motion.div>
-          </motion.div>
+          )}
+
+          {/* Logic - Step 2 */}
+          {step >= 2 && (
+            <motion.div
+              className="p-2 rounded-lg bg-accent/10 border border-accent/30 text-center mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs">
+                Orange sky + Birds going home = <span className="font-bold text-accent">EVENING</span>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Answer - Step 3 */}
+          {step >= 3 && (
+            <motion.div
+              className="px-4 py-2 rounded-xl bg-green-primary text-primary-foreground font-bold"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                🌇 Evening
+              </motion.div>
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

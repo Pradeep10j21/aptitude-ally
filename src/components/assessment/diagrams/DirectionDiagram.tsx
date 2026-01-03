@@ -35,16 +35,16 @@ const DirectionDiagram = ({ step }: DirectionDiagramProps) => {
             </defs>
             <rect width="260" height="200" fill="url(#grid)" />
 
-            {/* Start */}
+            {/* Start - Always visible */}
             <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <circle cx="80" cy="160" r="6" fill="hsl(var(--green-primary))" />
               <text x="80" y="178" textAnchor="middle" className="text-xs font-bold fill-foreground">Start</text>
             </motion.g>
 
-            {/* Path 1: North */}
+            {/* Path 1: North - Step 0 */}
             <motion.g
               initial={{ opacity: 0 }}
-              animate={{ opacity: step >= 0 ? 1 : 0.3 }}
+              animate={{ opacity: 1 }}
             >
               <motion.line
                 x1="80" y1="155" x2="80" y2="60"
@@ -52,88 +52,98 @@ const DirectionDiagram = ({ step }: DirectionDiagramProps) => {
                 strokeWidth="3"
                 strokeDasharray="100"
                 initial={{ strokeDashoffset: 100 }}
-                animate={{ strokeDashoffset: step >= 0 ? 0 : 100 }}
+                animate={{ strokeDashoffset: 0 }}
                 transition={{ duration: 0.6 }}
               />
               <polygon points="80,60 75,70 85,70" fill="hsl(var(--blue-500))" />
               <text x="95" y="110" className="text-xs font-bold fill-blue-500">5km N</text>
             </motion.g>
 
-            {/* Path 2: East */}
-            <motion.g
-              initial={{ opacity: 0 }}
-              animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-            >
-              <motion.line
-                x1="85" y1="60" x2="160" y2="60"
-                stroke="hsl(var(--amber-500))"
-                strokeWidth="3"
-                strokeDasharray="80"
-                initial={{ strokeDashoffset: 80 }}
-                animate={{ strokeDashoffset: step >= 1 ? 0 : 80 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              />
-              <polygon points="160,60 150,55 150,65" fill="hsl(var(--amber-500))" />
-              <text x="120" y="50" className="text-xs font-bold fill-amber-500">3km E</text>
-            </motion.g>
-
-            {/* Path 3: South */}
-            <motion.g
-              initial={{ opacity: 0 }}
-              animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-            >
-              <motion.line
-                x1="160" y1="65" x2="160" y2="160"
-                stroke="hsl(var(--purple-500))"
-                strokeWidth="3"
-                strokeDasharray="100"
-                initial={{ strokeDashoffset: 100 }}
-                animate={{ strokeDashoffset: step >= 2 ? 0 : 100 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              />
-              <polygon points="160,160 155,150 165,150" fill="hsl(var(--purple-500))" />
-              <text x="175" y="110" className="text-xs font-bold fill-purple-500">5km S</text>
-            </motion.g>
-
-            {/* End Point */}
-            <motion.g
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: step >= 2 ? 1 : 0, scale: step >= 2 ? 1 : 0 }}
-              transition={{ delay: 1 }}
-            >
-              <circle cx="160" cy="160" r="6" fill="hsl(var(--destructive))" />
-              <text x="160" y="178" textAnchor="middle" className="text-xs font-bold fill-foreground">End</text>
-            </motion.g>
-
-            {/* Distance Line */}
-            <motion.g
-              initial={{ opacity: 0 }}
-              animate={{ opacity: step >= 3 ? 1 : 0 }}
-            >
-              <line x1="80" y1="160" x2="160" y2="160" stroke="hsl(var(--green-primary))" strokeWidth="2" strokeDasharray="6,3" />
-              <motion.text
-                x="120" y="155"
-                textAnchor="middle"
-                className="text-sm font-bold fill-green-primary"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
+            {/* Path 2: East - Step 1 */}
+            {step >= 1 && (
+              <motion.g
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
               >
-                3 km
-              </motion.text>
-            </motion.g>
+                <motion.line
+                  x1="85" y1="60" x2="160" y2="60"
+                  stroke="hsl(var(--amber-500))"
+                  strokeWidth="3"
+                  strokeDasharray="80"
+                  initial={{ strokeDashoffset: 80 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+                <polygon points="160,60 150,55 150,65" fill="hsl(var(--amber-500))" />
+                <text x="120" y="50" className="text-xs font-bold fill-amber-500">3km E</text>
+              </motion.g>
+            )}
+
+            {/* Path 3: South - Step 2 */}
+            {step >= 2 && (
+              <motion.g
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <motion.line
+                  x1="160" y1="65" x2="160" y2="160"
+                  stroke="hsl(var(--purple-500))"
+                  strokeWidth="3"
+                  strokeDasharray="100"
+                  initial={{ strokeDashoffset: 100 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ duration: 0.6 }}
+                />
+                <polygon points="160,160 155,150 165,150" fill="hsl(var(--purple-500))" />
+                <text x="175" y="110" className="text-xs font-bold fill-purple-500">5km S</text>
+              </motion.g>
+            )}
+
+            {/* End Point - Step 2 */}
+            {step >= 2 && (
+              <motion.g
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <circle cx="160" cy="160" r="6" fill="hsl(var(--destructive))" />
+                <text x="160" y="178" textAnchor="middle" className="text-xs font-bold fill-foreground">End</text>
+              </motion.g>
+            )}
+
+            {/* Distance Line - Step 3 */}
+            {step >= 3 && (
+              <motion.g
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <line x1="80" y1="160" x2="160" y2="160" stroke="hsl(var(--green-primary))" strokeWidth="2" strokeDasharray="6,3" />
+                <motion.text
+                  x="120" y="155"
+                  textAnchor="middle"
+                  className="text-sm font-bold fill-green-primary"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  3 km
+                </motion.text>
+              </motion.g>
+            )}
           </svg>
         </div>
 
-        {/* Explanation */}
-        <motion.div
-          className="absolute bottom-3 left-3 p-2 rounded-lg bg-card/95 border border-green-primary text-xs"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: step >= 3 ? 1 : 0 }}
-        >
-          <div className="font-bold text-green-primary">Analysis:</div>
-          <div className="text-muted-foreground">5N + 5S = 0 (cancel)</div>
-          <div className="font-bold">Distance = 3 km East</div>
-        </motion.div>
+        {/* Explanation - Step 3 */}
+        {step >= 3 && (
+          <motion.div
+            className="absolute bottom-3 left-3 p-2 rounded-lg bg-card/95 border border-green-primary text-xs"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="font-bold text-green-primary">Analysis:</div>
+            <div className="text-muted-foreground">5N + 5S = 0 (cancel)</div>
+            <div className="font-bold">Distance = 3 km East</div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
