@@ -18,7 +18,7 @@ const PartnershipDiagram = ({ step }: PartnershipDiagramProps) => {
       <div className="diagram-scene relative bg-gradient-to-br from-green-soft/20 via-background to-green-light/20">
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Partners */}
+          {/* Partners - Always visible */}
           <motion.div
             className="flex gap-6 mb-4"
             initial={{ opacity: 0, y: -20 }}
@@ -40,7 +40,7 @@ const PartnershipDiagram = ({ step }: PartnershipDiagramProps) => {
             </div>
           </motion.div>
 
-          {/* Ratio Bar */}
+          {/* Ratio Bar - Always visible */}
           <motion.div
             className="w-full max-w-xs mb-3"
             initial={{ opacity: 0 }}
@@ -66,51 +66,57 @@ const PartnershipDiagram = ({ step }: PartnershipDiagramProps) => {
             </div>
           </motion.div>
 
-          {/* Total Profit */}
-          <motion.div
-            className="px-4 py-2 rounded-xl bg-green-primary/10 border-2 border-green-primary mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0 }}
-          >
-            <div className="text-center">
-              <div className="text-xs text-muted-foreground">Total Profit</div>
-              <div className="text-xl font-bold text-green-primary">₹{totalProfit.toLocaleString()}</div>
-            </div>
-          </motion.div>
-
-          {/* Calculation */}
-          <motion.div
-            className="p-3 rounded-xl bg-card/90 border border-border text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-          >
-            <div className="text-xs mb-2">Per part = ₹{totalProfit.toLocaleString()} ÷ {totalParts} = ₹{perPart.toLocaleString()}</div>
-            <div className="flex gap-3 justify-center">
-              <div className="px-2 py-1 rounded bg-blue-500/10 border border-blue-500">
-                <div className="text-xs text-muted-foreground">A's Share</div>
-                <div className="text-sm font-bold text-blue-500">₹{shareA.toLocaleString()}</div>
+          {/* Total Profit - Step 1 */}
+          {step >= 1 && (
+            <motion.div
+              className="px-4 py-2 rounded-xl bg-green-primary/10 border-2 border-green-primary mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-center">
+                <div className="text-xs text-muted-foreground">Total Profit</div>
+                <div className="text-xl font-bold text-green-primary">₹{totalProfit.toLocaleString()}</div>
               </div>
-              <div className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500">
-                <div className="text-xs text-muted-foreground">B's Share</div>
-                <motion.div 
-                  className="text-sm font-bold text-amber-500"
-                  animate={step >= 3 ? { scale: [1, 1.1, 1] } : {}}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  ₹{shareB.toLocaleString()}
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
-          {/* Answer */}
-          <motion.div
-            className="mt-3 px-4 py-1 rounded-full bg-green-primary text-primary-foreground font-bold text-sm"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: step >= 3 ? 1 : 0, scale: step >= 3 ? 1 : 0.9 }}
-          >
-            B's Share = ₹{shareB.toLocaleString()}
-          </motion.div>
+          {/* Calculation - Step 2 */}
+          {step >= 2 && (
+            <motion.div
+              className="p-3 rounded-xl bg-card/90 border border-border text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs mb-2">Per part = ₹{totalProfit.toLocaleString()} ÷ {totalParts} = ₹{perPart.toLocaleString()}</div>
+              <div className="flex gap-3 justify-center">
+                <div className="px-2 py-1 rounded bg-blue-500/10 border border-blue-500">
+                  <div className="text-xs text-muted-foreground">A's Share</div>
+                  <div className="text-sm font-bold text-blue-500">₹{shareA.toLocaleString()}</div>
+                </div>
+                <div className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500">
+                  <div className="text-xs text-muted-foreground">B's Share</div>
+                  <motion.div 
+                    className="text-sm font-bold text-amber-500"
+                    animate={step >= 3 ? { scale: [1, 1.1, 1] } : {}}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  >
+                    ₹{shareB.toLocaleString()}
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Answer - Step 3 */}
+          {step >= 3 && (
+            <motion.div
+              className="mt-3 px-4 py-1 rounded-full bg-green-primary text-primary-foreground font-bold text-sm"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              B's Share = ₹{shareB.toLocaleString()}
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

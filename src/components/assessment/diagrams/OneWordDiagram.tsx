@@ -17,7 +17,7 @@ const OneWordDiagram = ({ step }: OneWordDiagramProps) => {
       <div className="diagram-scene relative bg-gradient-to-br from-green-soft/20 via-background to-green-light/20">
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Definition */}
+          {/* Definition - Always visible */}
           <motion.div
             className="p-3 rounded-xl bg-card/90 border-2 border-green-primary mb-4 text-center max-w-sm"
             initial={{ opacity: 0, y: -20 }}
@@ -27,7 +27,7 @@ const OneWordDiagram = ({ step }: OneWordDiagramProps) => {
             <div className="text-sm font-bold">"A person who knows many languages"</div>
           </motion.div>
 
-          {/* Options */}
+          {/* Options - Always visible */}
           <div className="grid grid-cols-2 gap-2 w-full max-w-sm mb-3">
             {options.map((opt, i) => (
               <motion.div
@@ -61,38 +61,42 @@ const OneWordDiagram = ({ step }: OneWordDiagramProps) => {
             ))}
           </div>
 
-          {/* Etymology */}
-          <motion.div
-            className="p-3 rounded-xl bg-accent/10 border border-accent/30 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="text-xs font-bold text-accent mb-2">Word Etymology</div>
-            <div className="flex items-center justify-center gap-2">
-              <div className="p-1 rounded bg-blue-500/20">
-                <div className="font-bold text-xs text-blue-600 dark:text-blue-400">POLY</div>
-                <div className="text-xs text-muted-foreground">= Many</div>
+          {/* Etymology - Step 1 */}
+          {step >= 1 && (
+            <motion.div
+              className="p-3 rounded-xl bg-accent/10 border border-accent/30 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs font-bold text-accent mb-2">Word Etymology</div>
+              <div className="flex items-center justify-center gap-2">
+                <div className="p-1 rounded bg-blue-500/20">
+                  <div className="font-bold text-xs text-blue-600 dark:text-blue-400">POLY</div>
+                  <div className="text-xs text-muted-foreground">= Many</div>
+                </div>
+                <div className="text-sm">+</div>
+                <div className="p-1 rounded bg-amber-500/20">
+                  <div className="font-bold text-xs text-amber-600 dark:text-amber-400">GLOT</div>
+                  <div className="text-xs text-muted-foreground">= Language</div>
+                </div>
+                <div className="text-sm">=</div>
+                <div className="p-1 rounded bg-green-primary/20">
+                  <div className="font-bold text-xs text-green-primary">POLYGLOT</div>
+                </div>
               </div>
-              <div className="text-sm">+</div>
-              <div className="p-1 rounded bg-amber-500/20">
-                <div className="font-bold text-xs text-amber-600 dark:text-amber-400">GLOT</div>
-                <div className="text-xs text-muted-foreground">= Language</div>
-              </div>
-              <div className="text-sm">=</div>
-              <div className="p-1 rounded bg-green-primary/20">
-                <div className="font-bold text-xs text-green-primary">POLYGLOT</div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
-          {/* Fun Fact */}
-          <motion.div
-            className="mt-2 text-xs text-muted-foreground text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 3 ? 1 : 0 }}
-          >
-            🌟 Pope John Paul II spoke 8 languages!
-          </motion.div>
+          {/* Fun Fact - Step 3 */}
+          {step >= 3 && (
+            <motion.div
+              className="mt-2 text-xs text-muted-foreground text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              🌟 Pope John Paul II spoke 8 languages!
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

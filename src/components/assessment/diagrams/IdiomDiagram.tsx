@@ -32,7 +32,7 @@ const IdiomDiagram = ({ step }: IdiomDiagramProps) => {
 
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Desk Scene */}
+          {/* Desk Scene - Always visible */}
           <motion.div
             className="relative mb-4"
             initial={{ opacity: 0 }}
@@ -50,27 +50,31 @@ const IdiomDiagram = ({ step }: IdiomDiagramProps) => {
                 <div className="text-xs mt-1 text-amber-200">🪔</div>
               </motion.div>
               
-              {/* Books */}
-              <motion.div
-                className="text-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: step >= 1 ? 1 : 0.5 }}
-              >
-                📚
-              </motion.div>
+              {/* Books - Step 1 */}
+              {step >= 1 && (
+                <motion.div
+                  className="text-2xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  📚
+                </motion.div>
+              )}
               
-              {/* Person */}
-              <motion.div
-                className="text-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: step >= 1 ? 1 : 0.5 }}
-              >
-                👨‍💼
-              </motion.div>
+              {/* Person - Step 1 */}
+              {step >= 1 && (
+                <motion.div
+                  className="text-2xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  👨‍💼
+                </motion.div>
+              )}
             </div>
           </motion.div>
 
-          {/* Time */}
+          {/* Time - Always visible */}
           <motion.div
             className="flex items-center gap-1 mb-3 px-3 py-1 rounded-full bg-slate-700/80 border border-slate-500"
             initial={{ opacity: 0 }}
@@ -80,35 +84,41 @@ const IdiomDiagram = ({ step }: IdiomDiagramProps) => {
             <span className="text-white text-xs">Midnight</span>
           </motion.div>
 
-          {/* Idiom Breakdown */}
-          <motion.div
-            className="p-3 rounded-xl bg-card/95 border border-border text-center max-w-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-          >
-            <div className="font-bold mb-1">"Burn the Midnight Oil"</div>
-            <div className="text-xs text-muted-foreground mb-2">
-              Historical: People used oil lamps to work at night
-            </div>
+          {/* Idiom Breakdown - Step 2 */}
+          {step >= 2 && (
             <motion.div
-              className="p-2 rounded-lg bg-green-primary/10 border border-green-primary"
-              animate={step >= 3 ? { scale: [1, 1.02, 1] } : {}}
-              transition={{ duration: 1, repeat: Infinity }}
+              className="p-3 rounded-xl bg-card/95 border border-border text-center max-w-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
             >
-              <div className="text-xs font-bold text-green-primary">
-                = Work or study late into the night
+              <div className="font-bold mb-1">"Burn the Midnight Oil"</div>
+              <div className="text-xs text-muted-foreground mb-2">
+                Historical: People used oil lamps to work at night
               </div>
+              {step >= 3 && (
+                <motion.div
+                  className="p-2 rounded-lg bg-green-primary/10 border border-green-primary"
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  <div className="text-xs font-bold text-green-primary">
+                    = Work or study late into the night
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
-          </motion.div>
+          )}
 
-          {/* Example */}
-          <motion.div
-            className="mt-2 text-xs text-white/80 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 3 ? 1 : 0 }}
-          >
-            "She burned the midnight oil for her exam."
-          </motion.div>
+          {/* Example - Step 3 */}
+          {step >= 3 && (
+            <motion.div
+              className="mt-2 text-xs text-white/80 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              "She burned the midnight oil for her exam."
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

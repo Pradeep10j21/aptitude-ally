@@ -25,7 +25,7 @@ const SimpleInterestDiagram = ({ step }: SimpleInterestDiagramProps) => {
 
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Input Values */}
+          {/* Input Values - Always visible */}
           <motion.div
             className="flex gap-3 mb-4"
             initial={{ opacity: 0, y: -20 }}
@@ -45,71 +45,77 @@ const SimpleInterestDiagram = ({ step }: SimpleInterestDiagramProps) => {
             </div>
           </motion.div>
 
-          {/* Formula */}
-          <motion.div
-            className="px-4 py-2 rounded-lg bg-card/90 border border-border mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="text-sm font-mono font-bold text-center">
-              SI = <span className="text-blue-500">P</span> × <span className="text-amber-500">R</span> × <span className="text-purple-500">T</span> / 100
-            </div>
-          </motion.div>
-
-          {/* Calculation */}
-          <motion.div
-            className="p-3 rounded-xl bg-card/90 border border-border text-center mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-          >
-            <div className="text-xs space-y-1">
-              <div>SI = ({principal} × {rate} × {time}) / 100</div>
-              <div>SI = {principal * rate * time} / 100</div>
-              <motion.div
-                className="text-base font-bold text-green-primary"
-                animate={step >= 2 ? { scale: [1, 1.1, 1] } : {}}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                SI = ₹{interest}
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Timeline */}
-          <motion.div
-            className="w-full max-w-xs"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="flex justify-between items-center">
-              <div className="text-center">
-                <div className="w-10 h-10 rounded-full bg-green-primary/20 border-2 border-green-primary flex items-center justify-center text-xs font-bold">
-                  ₹{(principal/1000).toFixed(0)}k
-                </div>
-                <div className="text-xs mt-1">Start</div>
+          {/* Formula - Step 1 */}
+          {step >= 1 && (
+            <motion.div
+              className="px-4 py-2 rounded-lg bg-card/90 border border-border mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-sm font-mono font-bold text-center">
+                SI = <span className="text-blue-500">P</span> × <span className="text-amber-500">R</span> × <span className="text-purple-500">T</span> / 100
               </div>
-              
-              <div className="flex-1 h-2 bg-green-primary/30 mx-2 relative rounded-full">
+            </motion.div>
+          )}
+
+          {/* Calculation - Step 2 */}
+          {step >= 2 && (
+            <motion.div
+              className="p-3 rounded-xl bg-card/90 border border-border text-center mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs space-y-1">
+                <div>SI = ({principal} × {rate} × {time}) / 100</div>
+                <div>SI = {principal * rate * time} / 100</div>
                 <motion.div
-                  className="absolute inset-y-0 left-0 bg-green-primary rounded-full"
-                  initial={{ width: '0%' }}
-                  animate={{ width: step >= 2 ? '100%' : '0%' }}
-                  transition={{ duration: 1 }}
-                />
-              </div>
-              
-              <div className="text-center">
-                <motion.div 
-                  className="w-10 h-10 rounded-full bg-green-primary flex items-center justify-center text-xs font-bold text-primary-foreground"
-                  animate={step >= 2 ? { boxShadow: ['0 0 0 0 rgba(0,0,0,0.2)', '0 0 0 8px rgba(0,0,0,0)', '0 0 0 0 rgba(0,0,0,0)'] } : {}}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-base font-bold text-green-primary"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
                 >
-                  ₹{(amount/1000).toFixed(1)}k
+                  SI = ₹{interest}
                 </motion.div>
-                <div className="text-xs mt-1">End</div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
+
+          {/* Timeline - Step 1 */}
+          {step >= 1 && (
+            <motion.div
+              className="w-full max-w-xs"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="flex justify-between items-center">
+                <div className="text-center">
+                  <div className="w-10 h-10 rounded-full bg-green-primary/20 border-2 border-green-primary flex items-center justify-center text-xs font-bold">
+                    ₹{(principal/1000).toFixed(0)}k
+                  </div>
+                  <div className="text-xs mt-1">Start</div>
+                </div>
+                
+                <div className="flex-1 h-2 bg-green-primary/30 mx-2 relative rounded-full">
+                  <motion.div
+                    className="absolute inset-y-0 left-0 bg-green-primary rounded-full"
+                    initial={{ width: '0%' }}
+                    animate={{ width: step >= 2 ? '100%' : '0%' }}
+                    transition={{ duration: 1 }}
+                  />
+                </div>
+                
+                <div className="text-center">
+                  <motion.div 
+                    className="w-10 h-10 rounded-full bg-green-primary flex items-center justify-center text-xs font-bold text-primary-foreground"
+                    animate={step >= 2 ? { boxShadow: ['0 0 0 0 rgba(0,0,0,0.2)', '0 0 0 8px rgba(0,0,0,0)', '0 0 0 0 rgba(0,0,0,0)'] } : {}}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    ₹{(amount/1000).toFixed(1)}k
+                  </motion.div>
+                  <div className="text-xs mt-1">End</div>
+                </div>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const ClockDiagram = ({ step }: ClockDiagramProps) => {
       <div className="diagram-scene relative bg-gradient-to-br from-green-soft/20 via-background to-green-light/20">
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-          {/* Clock */}
+          {/* Clock - Always visible */}
           <motion.div
             className="relative mb-3"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -76,7 +76,7 @@ const ClockDiagram = ({ step }: ClockDiagramProps) => {
               {/* Center */}
               <circle cx="70" cy="70" r="4" fill="hsl(var(--green-primary))" />
 
-              {/* Right angle indicator */}
+              {/* Right angle indicator - Step 3 */}
               {step >= 3 && (
                 <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                   <path d="M 78 58 L 78 66 L 70 66" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" />
@@ -86,43 +86,51 @@ const ClockDiagram = ({ step }: ClockDiagramProps) => {
             </svg>
           </motion.div>
 
-          {/* Formula */}
-          <motion.div
-            className="p-2 rounded-lg bg-card/90 border border-border text-center mb-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-          >
-            <div className="text-xs text-muted-foreground">Angle formula:</div>
-            <div className="font-mono text-xs">|30H - 5.5M| = 90°</div>
-          </motion.div>
+          {/* Formula - Step 1 */}
+          {step >= 1 && (
+            <motion.div
+              className="p-2 rounded-lg bg-card/90 border border-border text-center mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="text-xs text-muted-foreground">Angle formula:</div>
+              <div className="font-mono text-xs">|30H - 5.5M| = 90°</div>
+            </motion.div>
+          )}
 
-          {/* Calculation */}
-          <motion.div
-            className="p-3 rounded-xl bg-card/90 border border-border text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= 2 ? 1 : 0.3 }}
-          >
-            <div className="space-y-1 text-xs font-mono">
-              <div>At H=3: |90 - 5.5M| = 90</div>
-              <div>5.5M = 180</div>
-              <motion.div
-                className="text-base font-bold text-green-primary"
-                animate={step >= 3 ? { scale: [1, 1.1, 1] } : {}}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                M = 32 8/11 min
-              </motion.div>
-            </div>
-          </motion.div>
+          {/* Calculation - Step 2 */}
+          {step >= 2 && (
+            <motion.div
+              className="p-3 rounded-xl bg-card/90 border border-border text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="space-y-1 text-xs font-mono">
+                <div>At H=3: |90 - 5.5M| = 90</div>
+                <div>5.5M = 180</div>
+                {step >= 3 && (
+                  <motion.div
+                    className="text-base font-bold text-green-primary"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  >
+                    M = 32 8/11 min
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
 
-          {/* Answer */}
-          <motion.div
-            className="mt-2 px-4 py-1 rounded-full bg-green-primary text-primary-foreground font-bold text-sm"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: step >= 3 ? 1 : 0, scale: step >= 3 ? 1 : 0.9 }}
-          >
-            Time: 3:32 8/11
-          </motion.div>
+          {/* Answer - Step 3 */}
+          {step >= 3 && (
+            <motion.div
+              className="mt-2 px-4 py-1 rounded-full bg-green-primary text-primary-foreground font-bold text-sm"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              Time: 3:32 8/11
+            </motion.div>
+          )}
         </div>
       </div>
     </div>
